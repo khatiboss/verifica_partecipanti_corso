@@ -19,6 +19,7 @@ Students
 					<th>Email</th>
 					<th>Phone</th>
 					<th>Update</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,7 +30,13 @@ Students
 						<td>{{$student->first_name}}</td>
 						<td>{{$student->email}}</td>
 						<td>{{$student->phone}}</td>
-						<td><a href="{{action('StudentsController@edit', [$student->id])}}">Update</a></td>
+						<td><a href="{{action('StudentsController@edit', [$student->id])}}" class="btn btn-primary">Update</a></td>
+						<td>
+							{!! Form::open(array('url' => 'students/'. $student->id)) !!}
+			                    {!! Form::hidden('_method', 'DELETE') !!}
+			                    {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+			                {!! Form::close() !!}
+						</td>
 					</tr>
 				@endforeach
 			</tbody>

@@ -62,7 +62,7 @@ class StudentsController extends Controller
     	return redirect('students');
     }
 
-    public function destroy(StudentRequest $request, Student $student)
+    public function destroy(Request $request, Student $student)
     {
     	$student->delete();
     	if ($request->ajax() || $request->wantsJson()) {
